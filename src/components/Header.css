@@ -68,6 +68,15 @@
   width: 100%;
 }
 
+.header nav a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.header nav a:hover {
+  color: inherit;
+}
+
 @media (max-width: 768px) {
   .header-content {
     flex-direction: column;

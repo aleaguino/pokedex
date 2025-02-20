@@ -3,6 +3,7 @@ import './TrainerForm.css';
 
 const TrainerForm = () => {
   const [trainers, setTrainers] = useState([]);
+  const [isExpanded, setIsExpanded] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
     region: '',
@@ -50,62 +51,73 @@ const TrainerForm = () => {
     localStorage.setItem('pokemon-trainers', JSON.stringify(updatedTrainers));
   };
 
+  const toggleTrainersList = () => {
+    setIsExpanded(!isExpanded);
+  };
+
   return (
     <div className="trainer-container">
-      <h2>Register Pokemon Trainer</h2>
+      <h2>Registrar Entrenador Pokémon</h2>
       <form className="trainer-form" onSubmit={handleSubmit}>
         <div className="form-group">
-          <label htmlFor="name">Trainer Name:</label>
+          <label htmlFor="name">Nombre del Entrenador:</label>
           <input
             type="text"
             id="name"
             name="name"
             value={formData.name}
             onChange={handleInputChange}
-            placeholder="Enter trainer's name"
+            placeholder="Ingresa el nombre del entrenador"
           />
         </div>
 
         <div className="form-group">
-          <label htmlFor="region">Region:</label>
+          <label htmlFor="region">Región:</label>
           <input
             type="text"
             id="region"
             name="region"
             value={formData.region}
             onChange={handleInputChange}
-            placeholder="Enter trainer's region"
+            placeholder="Ingresa la región"
           />
         </div>
 
         <div className="form-group">
-          <label htmlFor="favoritePokemon">Favorite Pokemon:</label>
+          <label htmlFor="favoritePokemon">Pokémon Favorito:</label>
           <input
             type="text"
             id="favoritePokemon"
             name="favoritePokemon"
             value={formData.favoritePokemon}
             onChange={handleInputChange}
-            placeholder="Enter favorite Pokemon"
+            placeholder="Ingresa tu Pokémon favorito"
           />
         </div>
 
-        <button type="submit" className="submit-button">Register Trainer</button>
+        <button type="submit" className="submit-button">Registrar Entrenador</button>
       </form>
 
-      <div className="trainers-list">
+      <button 
+        className={`trainers-toggle ${isExpanded ? 'expanded' : ''}`}
+        onClick={toggleTrainersList}
+      >
+        Entrenadores Registrados
+      </button>
+
+      <div className={`trainers-list ${isExpanded ? 'expanded' : ''}`}>
         {trainers.map(trainer => (
           <div key={trainer.id} className="trainer-card">
             <div className="trainer-info">
               <h4>{trainer.name}</h4>
-              <p><strong>Region:</strong> {trainer.region}</p>
-              <p><strong>Favorite Pokemon:</strong> {trainer.favoritePokemon}</p>
+              <p>Región: {trainer.region}</p>
+              <p>Pokémon Favorito: {trainer.favoritePokemon}</p>
             </div>
             <button
               className="delete-button"
               onClick={() => handleDelete(trainer.id)}
             >
-              Delete
+              Eliminar Entrenador
             </button>
           </div>
         ))}

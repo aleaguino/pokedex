@@ -12,7 +12,7 @@ const Footer = () => {
           <a href="#">Términos de Uso</a>
         </div>
         <div className="pokemon-info">
-          <p>Powered by la tecnología de los Pokémon</p>
+          <p>Powered by el mundo Pokémon</p>
         </div>
       </div>
     </footer>

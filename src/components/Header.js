@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './Header.css';
 
 const Header = () => {
@@ -8,9 +9,10 @@ const Header = () => {
         <h1>Pokédex de Agui</h1>
         <nav>
           <ul>
-            <li>Inicio</li>
-            <li>Buscar Pokémon</li>
-            <li>Entrenadores</li>
+            <li><Link to="/">Inicio</Link></li>
+            <li><Link to="/">Buscar Pokémon</Link></li>
+            <li><Link to="/">Entrenadores</Link></li>
+            <li><Link to="/pokedex">Pokédex</Link></li>
           </ul>
         </nav>
       </div>

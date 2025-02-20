@@ -1,19 +1,16 @@
-.librarian-container {
+.trainer-container {
   max-width: 1200px;
   margin: 2rem auto;
   padding: 0 1rem;
-  display: grid;
-  gap: 2rem;
-  grid-template-columns: 1fr;
 }
 
-.librarian-form {
+.trainer-form {
   background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
   padding: 2.5rem;
   border-radius: 16px;
   box-shadow: 0 8px 30px rgba(0,0,0,0.12);
   border: 1px solid rgba(255,255,255,0.8);
-  backdrop-filter: blur(20px);
+  margin-bottom: 2rem;
 }
 
 .form-group {
@@ -23,7 +20,7 @@
 .form-group label {
   display: block;
   margin-bottom: 0.5rem;
-  color: #2c3e50;
+  color: var(--pokemon-dark);
   font-weight: 500;
 }
 
@@ -37,12 +34,12 @@
 
 .form-group input:focus {
   outline: none;
-  border-color: #3498db;
-  box-shadow: 0 0 0 2px rgba(52,152,219,0.2);
+  border-color: var(--pokemon-blue);
+  box-shadow: 0 0 0 2px rgba(38, 72, 220, 0.2);
 }
 
 .submit-button {
-  background-color: #2ecc71;
+  background-color: var(--pokemon-red);
   color: white;
   border: none;
   padding: 0.8rem 1.5rem;
@@ -54,72 +51,79 @@
 }
 
 .submit-button:hover {
-  background-color: #27ae60;
+  background-color: #cc1414;
 }
 
-.librarians-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 1.5rem;
-  padding: 1rem;
-}
-
-.librarian-card {
-  background: rgba(255, 255, 255, 0.9);
-  border-radius: 16px;
-  padding: 2rem;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-  border: 1px solid rgba(255,255,255,0.8);
-  backdrop-filter: blur(12px);
-  transform: translateY(0);
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  position: relative;
+.trainers-list {
+  max-height: 0;
   overflow: hidden;
+  transition: max-height 0.3s ease-out;
 }
 
-.librarian-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 4px;
-  background: linear-gradient(90deg, #3498db, #2ecc71);
-  transform: scaleX(0);
+.trainers-list.expanded {
+  max-height: 1000px;
+  transition: max-height 0.5s ease-in;
+}
+
+.trainers-toggle {
+  background-color: var(--pokemon-red);
+  color: white;
+  border: none;
+  padding: 1rem;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+.trainers-toggle:hover {
+  background-color: #cc1414;
+}
+
+.trainers-toggle::after {
+  content: '▼';
   transition: transform 0.3s ease;
 }
 
-.librarian-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+.trainers-toggle.expanded::after {
+  transform: rotate(180deg);
 }
 
-.librarian-card:hover::before {
-  transform: scaleX(1);
+.trainer-card {
+  background: white;
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  border: 1px solid #eee;
 }
 
-.specialist-info h4 {
-  color: #2c3e50;
+.trainer-info h4 {
   margin: 0 0 0.5rem 0;
-  font-size: 1.2rem;
+  color: var(--pokemon-dark);
 }
 
-.specialist-info p {
-  margin: 0.3rem 0;
-  color: #555;
+.trainer-info p {
+  margin: 0.25rem 0;
+  color: #666;
 }
 
 .delete-button {
-  background-color: #e74c3c;
+  background-color: #ff4757;
   color: white;
   border: none;
   padding: 0.5rem 1rem;
   border-radius: 4px;
   cursor: pointer;
-  font-size: 0.9rem;
+  margin-top: 1rem;
   transition: background-color 0.3s ease;
 }
 
 .delete-button:hover {
-  background-color: #c0392b;
+  background-color: #ff6b81;
 }
